@@ -1,0 +1,76 @@
+package stacks;
+
+public class stackLL {
+	
+	static class node{
+		int data;
+		node next;
+		//constructor to point towards class method
+		public node(int data){
+			this.data=data;
+			this.next=null;
+			
+		}
+		
+	}
+	public static int size;//since static can call other static property only
+	public static class Stack{
+		public static node head;//which will always be the top of our stack
+		public static boolean isEmpty() {
+			return head==null;//this statement will 
+			//1.return true if head==null
+			//2.return false if head!=null
+		}
+		public static void push(int data) {
+			node n=new node(data);
+			if(isEmpty()) {
+				head=n;
+				size++;
+				return;
+			}
+			n.next=head;
+			head=n;
+			size++;
+		}
+		
+		public static int pop() {
+			//firstly check whether the stack is empty or not;
+			if(isEmpty()) {
+				System.out.println("stack is empty!!");
+				return -1;
+			}
+			int top=head.data;
+			head=head.next;
+		//since stack follows LIFO therefore in pop always the top or the head element is removed
+			return top;
+		}
+		
+		public static int peek() {
+			if(isEmpty()) {
+				System.out.println("stack is empty!!");
+				return -1;
+			}
+			
+			return head.data;//peek always give first element w/o actually removing it
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Stack s=new Stack();
+		s.push(1);
+		s.push(2);
+		s.push(3);
+		s.push(4);
+		while(!s.isEmpty()) {
+			//this will run till the list is empty that is the condition given in the while
+			System.out.println(s.peek());
+			s.pop();
+		}
+		
+		
+		
+	}
+
+}
