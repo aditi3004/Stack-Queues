@@ -1,0 +1,87 @@
+package stacks;
+import java.util.*;
+
+class stack{
+		int size;
+		int Stack[];
+		int top;
+		
+		stack(int size){
+			this.size=size;
+			this.Stack=new int [size];
+			this.top=-1;
+		}
+		
+		//isEmpty
+		public boolean isEmpty() {
+			//top==-1 will be true if the stack is empty
+			return(top==-1);
+		}
+		
+		//is full
+		public boolean isFull() {
+			//size-1 is the top that implies the stack is full now!!
+			return(size-1==top);
+		}
+		
+		//push the data on the top of the stack;
+		public void push(int data) {
+			if(!isFull()) {
+				top++;
+				Stack[top]=data;
+				System.out.println("element successfully pushed: "+data);
+			}
+			else {
+				System.out.println("stack is full!!");
+			}
+		}
+		
+		
+		//pop the element(we can delete only the top element
+		public int pop() {
+			if(!isEmpty()) {
+				int popIndex=top;//storing the top item for deleting it
+				top--; //this deletes
+				System.out.println("element is successfully poped: "+Stack[popIndex]);
+				return Stack[popIndex];
+			}
+			else {
+				System.out.println("Stack is empty!!");
+				return -1;
+			}
+		}
+		
+		//peeking the element
+		public int peek() {
+			if(!this.isEmpty()) {
+				return Stack[top];
+			}
+			else {
+				System.out.println("Stack is empty");
+				return -1;
+			}
+		}
+		
+		//displaying
+		
+		
+	}
+
+public class StackArray {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		stack s=new stack(5);
+		s.pop();
+		s.push(0);
+		s.push(1);
+		s.push(2);
+		s.push(3);
+		//s.display();
+		System.out.println("-------------------------------");
+		s.pop();
+		s.pop();
+		//s.display();
+		
+	}
+
+}
