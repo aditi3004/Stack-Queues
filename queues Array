@@ -1,0 +1,69 @@
+package queues;
+
+public class enqueue {
+	
+		int size;
+		int front,rear;
+		int[] arr;
+		int count;
+		
+		enqueue(int size){
+			this.size=size;
+			arr=new int[size];
+			front=count=0;
+			rear=0;
+			
+		}
+		
+		boolean isFull() {
+			return(count==size);
+		}
+		
+		boolean isEmpty() {
+			return(count==0);
+		}
+		
+		void enqueueIn(int data) {
+			if(!isFull()) {
+				arr[rear]=data;
+				rear++;
+				count++;
+				System.out.println("rear points to the index: "+rear);
+				System.out.println("successfully enqueued!!");
+			}
+			else {
+				rear++;
+				System.out.println("queue is full");}
+		}
+		
+		int dequeue() {
+			if(!isEmpty()) {
+				int dequeueData=arr[front];
+				front++;
+				count--;
+				System.out.println("dequeued item:"+dequeueData);
+				return dequeueData;
+			}
+			else {
+				System.out.println("queue is empty");
+				return -1;
+			}
+		}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		enqueue q=new enqueue(5);
+		q.dequeue();
+		q.enqueueIn(9);
+		q.enqueueIn(8);
+		q.enqueueIn(7);
+		q.enqueueIn(6);
+		q.enqueueIn(5);
+		q.dequeue();
+		q.dequeue();
+		q.dequeue();
+		q.dequeue();
+		q.dequeue();
+	}
+
+}
